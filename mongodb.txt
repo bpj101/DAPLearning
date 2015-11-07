@@ -1,0 +1,1 @@
+mongod --directoryperdb --dbpath /mongodb/data/db --logappend --logpath /mongodb/log/mongodb.log --rest
