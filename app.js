@@ -18,6 +18,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/daplearn');
 var db = mongoose.connection;
 
+var async = require('async');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -79,6 +81,9 @@ app.use(flash());
 // Global Variable
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
+  if (req.url == '/') {
+    res.locals.isHome = true;
+  }
   next();
 });
 

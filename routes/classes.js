@@ -21,4 +21,17 @@ router.get('/', function (req, res, next) {
   }, 3);
 });
 
+/* GET All Classes */
+router.get('/:id/details', function (req, res, next) {
+  Class.getClassById([req.params.id], function (err, classname) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.render('classes/details', {
+        'class': classname
+      });
+    }
+  });
+});
 module.exports = router;

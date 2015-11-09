@@ -30,8 +30,10 @@
   </div>
   
   <hr />
-  
- {{>classes}}
+  {{#if isHome}}
+    <!-- To Show Classes on Home Page -->
+    {{>classes}}
+  {{/if}}
 </div>
 </div><!-- END GRID -->
 <!-- ===================================== START FOOTER ===================================== -->
