@@ -14,9 +14,14 @@ var localStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
+// connect the `mongoose` instance
+mongoose.connect('mongodb://localhost/daplearn');
+var db = mongoose.connection;
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var classes = require('./routes/classes');
 
 var app = express();
 
@@ -70,6 +75,7 @@ app.use(expressValidator({
 
 // Connect-Flash
 app.use(flash());
+
 // Global Variable
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
@@ -78,6 +84,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/classes', classes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

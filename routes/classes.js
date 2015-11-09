@@ -6,14 +6,14 @@ var router = express.Router();
 var Class = require('../models/class');
 
 
-/* GET home page. */
+/* GET All Classes */
 router.get('/', function (req, res, next) {
   Class.getClasses(function (err, classes) {
     if (err) {
       console.log(err);
       res.send(err);
     } else {
-      res.render('index', {
+      res.render('classes/index', {
         'classes': classes
       });
     }
