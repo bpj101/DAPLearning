@@ -17,7 +17,6 @@ router.get('/', function (req, res, next) {
         'classes': classes
       });
     }
-    console.log(classes);
   }, 3);
 });
 
